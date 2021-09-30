@@ -12,6 +12,14 @@ router.get('/', async (req, res) => {
 })
 
 // -- update --
+router.put('/:id', async (req, res) => {
+  try {
+    const updatedParty = await Party.findByIdAndUpdate(req.params.id, req.body, {new: true})
+    res.status(200).json(updatedParty)
+  } catch(err) {
+    res.status(400).json({ error: err.message })
+  }
+})
 
 
 // -- create --
