@@ -11,6 +11,16 @@ router.get('/', async (req, res) => {
   }
 })
 
+// --- show ---
+router.get('/:id', async (req, res) => {
+  try {
+    const foundParties = await Party.findById(req.params.id)
+    res.status(200).json(foundParties)
+  } catch(err) {
+    res.status(400).json({ error: err.message })
+  }
+})
+
 // -- update --
 router.put('/:id', async (req, res) => {
   try {
