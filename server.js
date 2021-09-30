@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+require('./db/db')
 const PORT = process.env.PORT || 9000
 
 const partiesController = require('./controllers/parties.js')
