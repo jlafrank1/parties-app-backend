@@ -11,8 +11,10 @@ router.get('/', async (req, res) => {
   }
 })
 
+// -- update --
 
 
+// -- create --
 router.post('/', async (req, res) => {
     try {
         const newParty = await Party.create(req.body);
@@ -22,6 +24,17 @@ router.post('/', async (req, res) => {
             error: err.message
         })
     }
+})
+
+
+// -- delete --
+router.delete('/:id', async (req, res) => {
+  try {
+    const deletedParty = await Party.findByIdAndRemove(req.params.id)
+    res.status(200).json(deletedParty)
+  } catch(err) {
+    res.status(400).json({ error: err.message })
+  }
 })
 
 
