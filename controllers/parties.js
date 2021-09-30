@@ -2,8 +2,13 @@ const express = require('express')
 const router = express.Router()
 const Party = require('../models/party.js')
 
-router.get('/', (req, res) => {
-  res.send('index')
+router.get('/', async (req, res) => {
+  try {
+    const foundParties = await Party.find()
+    res.status(200).json(foundParties)
+  } catch(err) {
+    res.status(400).json({ error: err.message })
+  }
 })
 
 
