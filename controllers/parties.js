@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Party = require('../models/party.js')
 
+// --- index ---
 router.get('/', async (req, res) => {
   try {
     const foundParties = await Party.find()
